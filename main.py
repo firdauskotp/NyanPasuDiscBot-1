@@ -156,13 +156,14 @@ async def p(ctx):
 
   # await ctx.send('What fate have you brought upon yourself?')
 
-  await ctx.send('What fate have you brought upon yourself?! This bot will self destruct(disconnect) in 5 mins')
+  await ctx.send('What fate have you brought upon yourself?! Although the music ends, the bot will remain here, until you disconnect it,staring into you, hauntingly. ')
   player = await YTDLSource.from_url('https://www.youtube.com/watch?v=anhaSZ4aJe8', loop=client.loop)
   voice_channel.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
   
-  time.sleep(300)
+  # time.sleep(300)
 
-  await voice_channel.disconnect()
+  # voice_client = ctx.message.guild.voice_client
+  # await voice_client.disconnect()
 
 @client.command(name='s', aliases=["S"],help='Disconnects bot from voice channel')
 async def s(ctx):
