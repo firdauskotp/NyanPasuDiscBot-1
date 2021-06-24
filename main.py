@@ -9,6 +9,7 @@ import youtube_dl
 import os
 import random
 import asyncio
+import time
 
 
 youtube_dl.utils.bug_reports_message = lambda: ''
@@ -149,11 +150,19 @@ async def p(ctx):
   server = ctx.message.guild
   voice_channel = server.voice_client
 
-  async with ctx.typing():
-    player = await YTDLSource.from_url('https://www.youtube.com/watch?v=anhaSZ4aJe8', loop=client.loop)
-    voice_channel.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
+  # async with ctx.typing():
+  #   player = await YTDLSource.from_url('https://www.youtube.com/watch?v=anhaSZ4aJe8', loop=client.loop)
+  #   voice_channel.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
 
-  await ctx.send('What fate have you brought upon yourself?')
+  # await ctx.send('What fate have you brought upon yourself?')
+
+  await ctx.send('What fate have you brought upon yourself?! This bot will self destruct(disconnect) in 5 mins')
+  player = await YTDLSource.from_url('https://www.youtube.com/watch?v=anhaSZ4aJe8', loop=client.loop)
+  voice_channel.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
+  
+  time.sleep(300)
+
+  await voice_channel.disconnect()
 
 @client.command(name='s', aliases=["S"],help='Disconnects bot from voice channel')
 async def s(ctx):
