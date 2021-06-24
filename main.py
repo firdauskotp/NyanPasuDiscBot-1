@@ -61,7 +61,7 @@ intents.members = True
 
 # client = discord.Client(intents=intents)
 # client = commands.Bot(command_prefix='$')
-client = commands.Bot(command_prefix = "$", intents = intents)
+client = commands.Bot(command_prefix = "^", intents = intents)
 
 # from apikeys import *
 
